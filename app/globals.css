@@ -22,12 +22,12 @@ body {
 
 
 ::-webkit-scrollbar {
-  width: 7.5px;
+  width: 9.5px;
   max-height: 9px;
   cursor: pointer;
 }
 ::-webkit-scrollbar-thumb {
-  border-radius: 2px;
+  border-radius: 1px;
   background: #555;
 }
 ::-webkit-scrollbar-track {

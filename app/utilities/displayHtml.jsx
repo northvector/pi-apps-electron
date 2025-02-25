@@ -4,7 +4,7 @@ import DOMPurify from "dompurify";
 
 const HtmlRenderer = ({ htmlContent }) => {
   const sanitizedHtmlContent = DOMPurify.sanitize(htmlContent);
-  
+
   const transformHtml = (html) => {
     return html
       .replace(/<img /g, '<img loading="lazy" class="rounded-lg my-2" ')

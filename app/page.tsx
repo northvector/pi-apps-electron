@@ -15,7 +15,7 @@ export default async function Home() {
   ];
 
   return (
-    <div className="font-[family-name:var(--font-geist-sans)] mt-10 p-3">
+    <div className="font-[family-name:var(--font-geist-sans)] p-3">
 
       <div className='p-1 rounded'>
         <div className='p-1 rounded bg-gradient-to-r from-blue-700 to-zinc-900 h-[200px] flex items-center justify-center'>
@@ -37,22 +37,22 @@ export default async function Home() {
       </div>
       {categories.filter((category) => category && category !== "hidden" && !category.includes("/")).map((category, index) => (
         <>
-        <div className="border-t border-zinc-700/50 my-3"></div>
-        <div className='p-1 rounded ' key={index}>
-          <div className='flex items-center justify-between'>
-            <div className="p-3 font-bold">{category}</div>
-            <Link href={`/viewcategory/${category}`} className='p-2 rounded bg-[#c7053d]'>more</Link>
+          <div className="border-t border-zinc-700/50 my-3"></div>
+          <div className='p-1 rounded ' key={index}>
+            <div className='flex items-center justify-between'>
+              <div className="p-3 font-bold">{category}</div>
+              <Link href={`/viewcategory/${category}`} className='p-2 rounded bg-[#c7053d] hover:bg-red-950'>more</Link>
+            </div>
+            <div className='my-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-1 *:rounded'>
+              {applist
+                .split("\n")
+                .filter((app) => app.split("|")[1] === category && app.split("|")[0] !== "" && app.split("|")[0] !== "hidden")
+                .slice(0, 4)
+                .map((app, index) => (
+                  <AppButton appname={app.split("|")[0]} key={index} />
+                ))}
+            </div>
           </div>
-          <div className='my-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-1 *:rounded'>
-            {applist
-              .split("\n")
-              .filter((app) => app.split("|")[1] === category && app.split("|")[0] !== "" && app.split("|")[0] !== "hidden")
-              .slice(0, 4)
-              .map((app, index) => (
-                <AppButton appname={app.split("|")[0]} key={index} />
-              ))}
-          </div>
-        </div>
         </>
       ))}
     </div>

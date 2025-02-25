@@ -24,13 +24,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className="overflow-hidden">
+      {/* hide scrollbar on body and html but add it on div */}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-hidden`}>
         <CustomTitleBar />
-
-        {children}
+        <div className="max-h-full h-[93vh] mt-10 overflow-auto">{children}</div>
       </body>
     </html>
   );

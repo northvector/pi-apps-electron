@@ -7,7 +7,7 @@ import React, { JSX } from "react";
  */
 const LinkifyText = ({ text }: { text: string }): JSX.Element => {
   const urlRegex = /(https?:\/\/[^\s]+)|(www\.[^\s]+)/g;
-  
+  if (!text) return <></>;
   const parts = text.split(urlRegex);
 
   return (

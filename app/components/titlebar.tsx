@@ -6,6 +6,7 @@ import { CiMaximize2 } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 import { IoCaretBackOutline, IoCaretForwardOutline } from "react-icons/io5";
 import { MdOutlineMinimize } from "react-icons/md";
+
 export const CustomTitleBar: React.FC = () => {
   const handleMinimize = () => {
     window.electronAPI.minimizeWindow();
