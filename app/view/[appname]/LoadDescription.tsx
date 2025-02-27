@@ -9,26 +9,16 @@ interface LoadDescriptionProps {
 
 const LoadDescription: React.FC<LoadDescriptionProps> = ({ appname }) => {
   const [content, setContent] = useState<string | null>(null);
-
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await window.electronAPI.readFile(`apps/${appname}/description`);
-        setContent(data);
-      } catch (error) {
-        console.error("Error reading file:", error);
-      }
-    };
-
-    fetchData();
+    window.electronAPI.readFile(`apps/${appname}/description`).then(setContent).catch(console.error);
   }, [appname]);
 
-  if (!content) return null;
-
-  return (
+  return content ? (
     <p>
       <LinkifyText text={content} />
     </p>
+  ) : (
+    "Loading Please wait"
   );
 };
 

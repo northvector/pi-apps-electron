@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CustomTitleBar } from "./components/titlebar";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,10 +26,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="overflow-hidden">
-      {/* hide scrollbar on body and html but add it on div */}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-hidden`}>
         <CustomTitleBar />
-        <div className="max-h-full h-[93vh] mt-10 overflow-auto">{children}</div>
+        <div className="max-h-full h-[93vh] mt-10 overflow-auto">
+          <div>
+            <Toaster />
+          </div>
+          {children}
+        </div>
       </body>
     </html>
   );
